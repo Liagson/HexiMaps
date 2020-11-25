@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="22.577778mm"
+   height="19.552929mm"
+   viewBox="0 0 80.000002 69.282036"
+   id="svg12918"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="flat_field.svg">
+  <defs
+     id="defs12920" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="8"
+     inkscape:cx="54.932621"
+     inkscape:cy="24.539437"
+     inkscape:document-units="px"
+     inkscape:current-layer="g6064"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata12923">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-75.71424,-317.84892)">
+    <g
+       id="g6064"
+       transform="translate(-1130.2539,-3429.7188)"
+       style="stroke:none">
+      <path
+         inkscape:export-ydpi="90"
+         inkscape:export-xdpi="90"
+         inkscape:export-filename="C:\Users\CARLOS ALIAGA\Desktop\inkscape\bosque.png"
+         sodipodi:type="star"
+         style="opacity:1;fill:#447821;fill-opacity:1;stroke:none;stroke-width:25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="path4244-4-2-3-8-5-1"
+         sodipodi:sides="6"
+         sodipodi:cx="1245.9681"
+         sodipodi:cy="3782.2087"
+         sodipodi:r1="40.000004"
+         sodipodi:r2="34.641018"
+         sodipodi:arg1="0"
+         sodipodi:arg2="0.52359878"
+         inkscape:flatsided="true"
+         inkscape:rounded="0"
+         inkscape:randomized="0"
+         d="m 1285.9681,3782.2087 -20,34.6411 -40,0 -20,-34.6411 20,-34.641 40,0 z" />
+    </g>
+  </g>
+</svg>
