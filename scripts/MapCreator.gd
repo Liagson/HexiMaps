@@ -9,9 +9,9 @@ onready var heightNoise = $HeightNoise
 func _ready():
 	pass
 
-func constructGeoMap(matrix, destinationPath):
+func constructGeoMap(geoMap):
+	var matrix = geoMap.matrix
 	var tileSize = Tile.instance().get_node("Background").texture.get_size()
-	var geoMap = get_node(destinationPath)
 	
 	for x in range(matrix.size()):
 		for y in range(matrix[0].size()):
@@ -35,7 +35,6 @@ func getTileMatrix(width, height):
 			matrix[x][y] = tileInfo
 
 	return matrix
-
 
 func getTileGeoTipe(heightValue):
 	if heightValue <= -0.75:
