@@ -2,25 +2,40 @@ extends Node
 
 const Tile = preload("res://Tile.tscn")
 const TileGeoInfo = preload("res://scripts/TileGeoInfo.gd")
+const TileInfo = preload("res://scripts/GameTileInfo.gd")
+
 onready var heightNoise = $HeightNoise
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	var noiseValue = null
-	var tile = null
-	var tileGeoTipe = null
+	pass
+
+func constructGeoMap(matrix, destinationPath):
 	var tileSize = Tile.instance().get_node("Background").texture.get_size()
-	var geoMap = get_node("../GeoMap")
+	var geoMap = get_node(destinationPath)
 	
-	for y in range(12):
-		for x in range(15):
-			var heightNoiseValue = heightNoise.texture.noise.\
-			get_noise_2d(x * tileSize[0], y * tileSize[1])
-			tile = Tile.instance()
-			tileGeoTipe = getTileGeoTipe(heightNoiseValue)
-			tile.get_node("Background").texture = getTileGeoTexture(tileGeoTipe)
+	for x in range(matrix.size()):
+		for y in range(matrix[0].size()):
+			var tile = Tile.instance()
+			setTileGeoTexture(tile, getTileGeoTexture(matrix[x][y].geoType))
 			tile.position = getTilePosition(x, y, tileSize)
 			geoMap.add_child(tile)
+	
+
+func getTileMatrix(width, height):
+	var matrix = []
+	var tileSize = Tile.instance().get_node("Background").texture.get_size()
+	for x in range(width):
+		matrix.append([])
+		for y in range(height):
+			matrix[x].append([])
+			var heightNoiseValue = heightNoise.texture.noise.\
+			get_noise_2d(x * tileSize[0], y * tileSize[1])
+			var tileInfo = TileInfo.new()
+			tileInfo.geoType = getTileGeoTipe(heightNoiseValue)
+			matrix[x][y] = tileInfo
+
+	return matrix
+
 
 func getTileGeoTipe(heightValue):
 	if heightValue <= -0.75:
@@ -36,6 +51,9 @@ func getTileGeoTipe(heightValue):
 
 func getTileGeoTexture(geoTipe):
 	return load(TileGeoInfo.tileTextures[geoTipe])
+
+func setTileGeoTexture(tile, geoTexture):
+	tile.get_node("Background").texture = geoTexture
 
 func getTilePosition(relativeX, relativeY, tileSize):
 	var tileWidth = tileSize[0]
