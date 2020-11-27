@@ -35,6 +35,7 @@ func getTileMatrix(width, height):
 			matrix[x][y] = tileInfo
 
 	setForest(matrix)
+	setTowns(matrix)
 	
 	return matrix
 
@@ -43,11 +44,20 @@ func setForest(matrix):
 		for y in range(matrix[0].size()):
 			var forestNoiseValue = forestNoise.texture.noise.\
 			get_noise_2d(x * tileSize[0], y * tileSize[1])
-			
+
+			# TODO: this should be defined somewhere else
 			if forestNoiseValue > 0.1:
 				if matrix[x][y].geoType == TileGeoInfo.TileTipe.field_green:
 					matrix[x][y].geoType = TileGeoInfo.TileTipe.forest_standard
-				
+
+func setTowns(matrix):
+	for x in range(matrix.size()):
+		for y in range(matrix[0].size()):
+			if TileGeoInfo.isTileBuildable(matrix[x][y].geoType):
+				var diceResult = randi()%20+1
+				# TODO: this should be defined somewhere else
+				if diceResult == 20:
+					matrix[x][y].geoType = TileGeoInfo.TileTipe.town
 
 func getTileGeoTipe(heightValue):
 	if heightValue <= -0.75:
