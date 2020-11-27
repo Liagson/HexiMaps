@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "TileInfo",
 "language": "GDScript",
-"path": "res://scripts/GameTileInfo.gd"
+"path": "res://scripts/mapCreation/GameTileInfo.gd"
 } ]
 _global_script_class_icons={
 "TileInfo": ""
@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="HexiMaps"
-run/main_scene="res://Game.tscn"
+run/main_scene="res://scenes/Game.tscn"
 
 [display]
 

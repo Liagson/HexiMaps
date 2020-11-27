@@ -1,8 +1,8 @@
 extends Node
 
-const Tile = preload("res://Tile.tscn")
-const TileGeoInfo = preload("res://scripts/TileGeoInfo.gd")
-const TileInfo = preload("res://scripts/GameTileInfo.gd")
+const Tile = preload("res://scenes/Tile.tscn")
+const TileGeoInfo = preload("res://scripts/mapCreation/TileGeoInfo.gd")
+const TileInfo = preload("res://scripts/mapCreation/GameTileInfo.gd")
 
 onready var heightNoise = $HeightNoise
 
