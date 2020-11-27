@@ -5,13 +5,17 @@ enum TileTipe {
 	hills_green,
 	mountains,
 	forest_standard,
-	town
+	town,
+	crop_field,
+	corn_field
 }
 
 const tileTextures = {
 	TileTipe.deepSea : "res://tiles/pngs/deep_sea.png",
 	TileTipe.shallowSea : "res://tiles/pngs/shallow_sea.png",
 	TileTipe.field_green : "res://tiles/pngs/green_field.png",
+	TileTipe.crop_field : "res://tiles/pngs/crop_field.png",
+	TileTipe.corn_field : "res://tiles/pngs/corn_field.png",
 	TileTipe.hills_green : "res://tiles/pngs/hills_(green).png",
 	TileTipe.mountains : "res://tiles/pngs/mountains.png",
 	TileTipe.forest_standard : "res://tiles/pngs/forest_(standard).png",
@@ -27,3 +31,9 @@ static func isTileBuildable(geotipe):
 		return false
 	else:
 		return true
+
+static func isArableLand(geotipe):
+	if isTileBuildable(geotipe) or geotipe == TileTipe.hills_green:
+		return true
+	else:
+		return false

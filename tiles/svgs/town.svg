@@ -76,10 +76,16 @@
          sodipodi:sides="6"
          id="path4244-1-65-5-2"
          style="opacity:1;fill:#a0892c;fill-opacity:1;stroke:none;stroke-width:25;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-         sodipodi:type="star" />
+         sodipodi:type="star"
+         inkscape:export-filename="d:\Alberto\Documents\Godot\HexiMaps\tiles\pngs\town.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90" />
       <g
          transform="matrix(1.9328322,0,0,1.9328322,1089.5225,-2605.4268)"
-         id="g5700-54">
+         id="g5700-54"
+         inkscape:export-filename="d:\Alberto\Documents\Godot\HexiMaps\tiles\pngs\town.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90">
         <rect
            style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            id="rect5714-5"
@@ -105,7 +111,10 @@
       </g>
       <g
          transform="matrix(1.9328322,0,0,1.9328322,1184.2295,-2514.9012)"
-         id="g5700-54-4">
+         id="g5700-54-4"
+         inkscape:export-filename="d:\Alberto\Documents\Godot\HexiMaps\tiles\pngs\town.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90">
         <rect
            style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            id="rect5714-5-0"
@@ -131,7 +140,10 @@
       </g>
       <g
          transform="matrix(-1.9328322,0,0,1.9328322,-3247.0671,-2373.0159)"
-         id="g5700-54-4-2">
+         id="g5700-54-4-2"
+         inkscape:export-filename="d:\Alberto\Documents\Godot\HexiMaps\tiles\pngs\town.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90">
         <rect
            style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            id="rect5714-5-0-5"
@@ -158,7 +170,10 @@
       <g
          style="fill:#000000;fill-opacity:1"
          transform="matrix(1.9328322,0,0,1.9328322,974.78967,-2471.857)"
-         id="g5700-5-72">
+         id="g5700-5-72"
+         inkscape:export-filename="d:\Alberto\Documents\Godot\HexiMaps\tiles\pngs\town.png"
+         inkscape:export-xdpi="90"
+         inkscape:export-ydpi="90">
         <rect
            style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:12.15352821;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
            id="rect5714-4-1"
