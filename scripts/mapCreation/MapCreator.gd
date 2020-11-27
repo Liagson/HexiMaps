@@ -51,8 +51,8 @@ func setForest(matrix):
 					matrix[x][y].geoType = TileGeoInfo.TileTipe.forest_standard
 
 func setTowns(matrix):
-	for x in range(matrix.size()):
-		for y in range(matrix[0].size()):
+	for x in range(1, matrix.size() - 1):
+		for y in range(1, matrix[0].size() - 1):
 			if TileGeoInfo.isTileBuildable(matrix[x][y].geoType):
 				var diceResult = randi()%20+1
 				# TODO: this should be defined somewhere else
