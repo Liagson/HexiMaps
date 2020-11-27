@@ -5,6 +5,7 @@ const TileGeoInfo = preload("res://scripts/mapCreation/TileGeoInfo.gd")
 const TileInfo = preload("res://scripts/mapCreation/GameTileInfo.gd")
 
 onready var heightNoise = $HeightNoise
+onready var forestNoise = $ForestNoise
 
 func _ready():
 	pass
@@ -34,7 +35,21 @@ func getTileMatrix(width, height):
 			tileInfo.geoType = getTileGeoTipe(heightNoiseValue)
 			matrix[x][y] = tileInfo
 
+	setForest(matrix)
+	
 	return matrix
+
+func setForest(matrix):
+	var tileSize = Tile.instance().get_node("Background").texture.get_size()
+	for x in range(matrix.size()):
+		for y in range(matrix[0].size()):
+			var forestNoiseValue = forestNoise.texture.noise.\
+			get_noise_2d(x * tileSize[0], y * tileSize[1])
+			
+			if forestNoiseValue > 0.1:
+				if matrix[x][y].geoType == TileGeoInfo.TileTipe.field_green:
+					matrix[x][y].geoType = TileGeoInfo.TileTipe.forest_standard
+				
 
 func getTileGeoTipe(heightValue):
 	if heightValue <= -0.75:
