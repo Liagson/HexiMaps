@@ -7,24 +7,23 @@ const TileInfo = preload("res://scripts/mapCreation/GameTileInfo.gd")
 onready var heightNoise = $HeightNoise
 onready var forestNoise = $ForestNoise
 
+var tileSize: Vector2
+
 func _ready():
-	pass
+	tileSize = Tile.instance().get_node("Background").texture.get_size()
 
 func constructGeoMap(geoMap):
-	var matrix = geoMap.matrix
-	var tileSize = Tile.instance().get_node("Background").texture.get_size()
+	var matrix = geoMap.matrix	
 	
 	for x in range(matrix.size()):
 		for y in range(matrix[0].size()):
 			var tile = Tile.instance()
 			setTileGeoTexture(tile, getTileGeoTexture(matrix[x][y].geoType))
-			tile.position = getTilePosition(x, y, tileSize)
+			tile.position = getTilePosition(x, y)
 			geoMap.add_child(tile)
-	
 
 func getTileMatrix(width, height):
 	var matrix = []
-	var tileSize = Tile.instance().get_node("Background").texture.get_size()
 	for x in range(width):
 		matrix.append([])
 		for y in range(height):
@@ -40,7 +39,6 @@ func getTileMatrix(width, height):
 	return matrix
 
 func setForest(matrix):
-	var tileSize = Tile.instance().get_node("Background").texture.get_size()
 	for x in range(matrix.size()):
 		for y in range(matrix[0].size()):
 			var forestNoiseValue = forestNoise.texture.noise.\
@@ -69,7 +67,7 @@ func getTileGeoTexture(geoTipe):
 func setTileGeoTexture(tile, geoTexture):
 	tile.get_node("Background").texture = geoTexture
 
-func getTilePosition(relativeX, relativeY, tileSize):
+func getTilePosition(relativeX, relativeY):
 	var tileWidth = tileSize[0]
 	var tileHeight = tileSize[1]
 	var verticalOffset = 0 if relativeX % 2 == 0 else (tileHeight / 2)
