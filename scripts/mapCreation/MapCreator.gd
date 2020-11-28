@@ -32,23 +32,21 @@ func getTileMatrix(width, height):
 			get_noise_2d(x * tileSize[0], y * tileSize[1])
 			var tileInfo = TileInfo.new()
 			tileInfo.geoType = getTileGeoTipe(heightNoiseValue)
+			setForestTile(x, y, tileInfo)
 			matrix[x][y] = tileInfo
 
-	setForest(matrix)
 	setTowns(matrix)
 	
 	return matrix
 
-func setForest(matrix):
-	for x in range(matrix.size()):
-		for y in range(matrix[0].size()):
-			var forestNoiseValue = forestNoise.texture.noise.\
-			get_noise_2d(x * tileSize[0], y * tileSize[1])
+func setForestTile(x, y, currentTile):
+	var forestNoiseValue = forestNoise.texture.noise.\
+	get_noise_2d(x * tileSize[0], y * tileSize[1])
 
-			# TODO: this should be defined somewhere else
-			if forestNoiseValue > 0.1:
-				if matrix[x][y].geoType == TileGeoInfo.TileTipe.field_green:
-					matrix[x][y].geoType = TileGeoInfo.TileTipe.forest_standard
+	# TODO: this should be defined somewhere else
+	if forestNoiseValue > 0.1:
+		if currentTile.geoType == TileGeoInfo.TileTipe.field_green:
+			currentTile.geoType = TileGeoInfo.TileTipe.forest_standard
 
 func setTowns(matrix):
 	for x in range(1, matrix.size() - 1):
