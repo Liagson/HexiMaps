@@ -15,8 +15,8 @@ func _ready():
 func constructGeoMap(geoMap):
 	var matrix = geoMap.matrix	
 	
-	for x in range(matrix.size()):
-		for y in range(matrix[0].size()):
+	for x in range(2, matrix.size() - 2):
+		for y in range(2, matrix[0].size() - 2):
 			var tile = Tile.instance()
 			setTileGeoTexture(tile, getTileGeoTexture(matrix[x][y].geoType))
 			tile.position = getTilePosition(x, y)
@@ -24,16 +24,19 @@ func constructGeoMap(geoMap):
 
 func getTileMatrix(width, height):
 	var matrix = []
-	for x in range(width):
+	for x in range(width + 4):
 		matrix.append([])
-		for y in range(height):
+		for y in range(height + 4):
 			matrix[x].append([])
-			var heightNoiseValue = heightNoise.texture.noise.\
-			get_noise_2d(x * tileSize[0], y * tileSize[1])
-			var tileInfo = TileInfo.new()
-			tileInfo.geoType = getTileGeoTipe(heightNoiseValue)
-			setForestTile(x, y, tileInfo)
-			matrix[x][y] = tileInfo
+			
+			# we leave an empty border
+			if x > 1 and x < (width + 2) and y > 1 and y < (height + 2):
+				var heightNoiseValue = heightNoise.texture.noise.\
+				get_noise_2d(x * tileSize[0], y * tileSize[1])
+				var tileInfo = TileInfo.new()
+				tileInfo.geoType = getTileGeoTipe(heightNoiseValue)
+				setForestTile(x, y, tileInfo)
+				matrix[x][y] = tileInfo
 
 	setTowns(matrix)
 	
@@ -49,8 +52,8 @@ func setForestTile(x, y, currentTile):
 			currentTile.geoType = TileGeoInfo.TileTipe.forest_standard
 
 func setTowns(matrix):
-	for x in range(1, matrix.size() - 1):
-		for y in range(1, matrix[0].size() - 1):
+	for x in range(2, matrix.size() - 2):
+		for y in range(2, matrix[0].size() - 2):
 			if TileGeoInfo.isTileBuildable(matrix[x][y].geoType):
 				var diceResult = randi()%20+1
 				# TODO: this should be defined somewhere else
