@@ -8,7 +8,7 @@ enum TileTipe {
 	town,
 	crop_field,
 	corn_field,
-	tile_hover
+	village
 }
 
 const tileTextures = {
@@ -21,7 +21,7 @@ const tileTextures = {
 	TileTipe.mountains : "res://tiles/pngs/mountains.png",
 	TileTipe.forest_standard : "res://tiles/pngs/forest_(standard).png",
 	TileTipe.town : "res://tiles/pngs/town.png",
-	TileTipe.tile_hover : "res://tiles/pngs/hover_tile.png"
+	TileTipe.village : "res://tiles/pngs/village.png"
 }
 
 static func isTileBuildable(geotipe):

@@ -17,8 +17,9 @@ func constructGeoMap(geoTypeMatrix, geoMap):
 	for x in range(2, geoTypeMatrix.size() - 2):
 		for y in range(2, geoTypeMatrix[0].size() - 2):
 			var tile = Tile.instance()
-			setTileGeoTexture(tile, getTileGeoTexture(geoTypeMatrix[x][y].geoType))
-			tile.position = getTilePosition(x, y)
+			tile.geoType = geoTypeMatrix[x][y].geoType
+			setTileGeoTexture(tile, getTileGeoTexture(tile.geoType))
+			tile.position = getTilePosition(x, y)			
 			tile.posX = x
 			tile.posY = y
 			
@@ -63,6 +64,20 @@ func setForestTile(x, y, currentTile):
 		if currentTile.geoType == TileGeoInfo.TileTipe.field_green:
 			currentTile.geoType = TileGeoInfo.TileTipe.forest_standard
 
+func setSuburbs(x, y, matrix):
+	var neighbourTiles = TileInfo.getNeighbourTiles(x, y, matrix)
+	for tile in neighbourTiles:
+		var neighbourTile = matrix[tile.x][tile.y]
+		if neighbourTile \
+		  and TileGeoInfo.isArableLand(neighbourTile.geoType):
+			var diceResult = randi()%20+1
+			if diceResult > 15:
+				matrix[tile.x][tile.y].geoType = TileGeoInfo.TileTipe.crop_field
+			elif diceResult > 8:
+				 matrix[tile.x][tile.y].geoType = TileGeoInfo.TileTipe.corn_field
+			else:
+				matrix[tile.x][tile.y].geoType = TileGeoInfo.TileTipe.village
+
 func setTowns(matrix):
 	for x in range(2, matrix.size() - 2):
 		for y in range(2, matrix[0].size() - 2):
@@ -71,6 +86,7 @@ func setTowns(matrix):
 				# TODO: this should be defined somewhere else
 				if diceResult == 20:
 					matrix[x][y].geoType = TileGeoInfo.TileTipe.town
+					setSuburbs(x, y, matrix)
 
 func getTileGeoTipe(heightValue):
 	if heightValue <= -0.75:

@@ -6,6 +6,7 @@ onready var selectionSprite = $SelectionSprite
 var posX
 var posY
 var isSelected = false
+var geoType
 
 signal tileClicked
 
