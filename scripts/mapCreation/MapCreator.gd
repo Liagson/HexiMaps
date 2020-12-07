@@ -12,15 +12,27 @@ var tileSize: Vector2
 func _ready():
 	tileSize = Tile.instance().get_node("Background").texture.get_size()
 
-func constructGeoMap(geoMap):
-	var matrix = geoMap.matrix	
-	
-	for x in range(2, matrix.size() - 2):
-		for y in range(2, matrix[0].size() - 2):
+func constructGeoMap(geoTypeMatrix, geoMap):
+	geoMap.matrix = getEmptyGeoMapMatrix(geoTypeMatrix)
+	for x in range(2, geoTypeMatrix.size() - 2):
+		for y in range(2, geoTypeMatrix[0].size() - 2):
 			var tile = Tile.instance()
-			setTileGeoTexture(tile, getTileGeoTexture(matrix[x][y].geoType))
+			setTileGeoTexture(tile, getTileGeoTexture(geoTypeMatrix[x][y].geoType))
 			tile.position = getTilePosition(x, y)
+			tile.posX = x
+			tile.posY = y
+			
+			geoMap.matrix[x][y] = tile
 			geoMap.add_child(tile)
+
+func getEmptyGeoMapMatrix(geoTypeMatrix):
+	var geoMapMatrix = []
+	for x in range(0, geoTypeMatrix.size()):
+		geoMapMatrix.append([])
+		for y in range(0, geoTypeMatrix[0].size()):
+			geoMapMatrix[x].append([])
+			geoMapMatrix[x][y] = null # borders will go empty
+	return geoMapMatrix
 
 func getTileMatrix(width, height):
 	var matrix = []
@@ -32,7 +44,7 @@ func getTileMatrix(width, height):
 			# we leave an empty border
 			if x > 1 and x < (width + 2) and y > 1 and y < (height + 2):
 				var heightNoiseValue = heightNoise.texture.noise.\
-				get_noise_2d(x * tileSize[0], y * tileSize[1])
+				get_noise_2d(x * tileSize.x, y * tileSize.y)
 				var tileInfo = TileInfo.new()
 				tileInfo.geoType = getTileGeoTipe(heightNoiseValue)
 				setForestTile(x, y, tileInfo)
